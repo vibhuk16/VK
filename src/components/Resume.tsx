@@ -8,37 +8,37 @@ import { Separator } from '@/components/ui/separator';
 const Resume: React.FC = () => {
   const experiences = [
     {
-      title: "Senior Frontend Developer",
-      company: "Tech Solutions Inc.",
+      title: "Senior Product Manager",
+      company: "MediaMarktSaturn",
       period: "2021 - Present",
-      description: "Led the development of client-facing web applications. Improved site performance by 40% and implemented CI/CD pipelines for streamlined deployment."
+      description: "Leading retail media product development across 11 countries for Europe's largest consumer electronics retailer. Building and scaling adtech data products that enable brands to access closed-loop measurement and targeting capabilities."
     },
     {
-      title: "Web Developer",
-      company: "Digital Innovations",
-      period: "2018 - 2021",
-      description: "Developed responsive websites and web applications for various clients. Collaborated with designers to implement UI/UX improvements."
+      title: "Global Product Operations Manager",
+      company: "Delivery Hero",
+      period: "2019 - 2021",
+      description: "Monitored product usage in 70 countries and collaborated with regional teams to improve engagement. Led initiatives resulting in 35% increase in product usage and €6M cost savings in MENA region."
     },
     {
-      title: "Junior Developer",
-      company: "StartUp Studio",
-      period: "2016 - 2018",
-      description: "Assisted in developing and maintaining client websites. Gained experience in modern JavaScript frameworks and responsive design principles."
+      title: "Data Scientist & Product Strategist",
+      company: "Stryber",
+      period: "2017 - 2019",
+      description: "Designed self-service data platform to help teams track KPIs and make informed decisions. Reduced manual reporting time by 70% and implemented data-driven decision frameworks."
     }
   ];
   
   const education = [
     {
-      degree: "Master of Computer Science",
-      institution: "Tech University",
+      degree: "Master of Science in Computational Science",
+      institution: "Technical University of Munich",
       year: "2016",
-      description: "Specialized in web technologies and user experience design."
+      description: "Specialized in data analytics and computational modeling with focus on business applications."
     },
     {
-      degree: "Bachelor of Software Engineering",
-      institution: "State University",
+      degree: "Bachelor of Technology",
+      institution: "Indian Institute of Technology",
       year: "2014",
-      description: "Graduated with honors. Completed capstone project on responsive web application architecture."
+      description: "Graduated with honors. Completed capstone project on data-driven business decision systems."
     }
   ];
   
@@ -46,6 +46,15 @@ const Resume: React.FC = () => {
     <section id="resume" className="bg-secondary/50">
       <div className="container">
         <h2 className="section-title">Resume</h2>
+        
+        <div className="mb-8 max-w-3xl">
+          <p className="text-lg mb-4">
+            I am an experienced product leader with a strong track record of driving business outcomes through digital innovation and data-driven decision-making. Currently leading adtech product initiatives at MediaMarktSaturn, I've previously held global roles at Delivery Hero and Stryber, where I built scalable solutions across multiple markets and verticals.
+          </p>
+          <p className="text-lg">
+            With a solid academic foundation from TU Munich and diverse hands-on experience, I bring a rare mix of strategic vision, technical understanding, and executional grit.
+          </p>
+        </div>
         
         <div className="flex flex-col md:flex-row gap-8 mb-8">
           <div className="md:w-1/2">
@@ -97,9 +106,11 @@ const Resume: React.FC = () => {
           </p>
           
           <div className="flex gap-4">
-            <Button className="btn-primary animate-fade-up" style={{ animationDelay: '0.5s' }}>
-              <Download className="mr-2" size={16} />
-              Download Resume
+            <Button className="btn-primary animate-fade-up" style={{ animationDelay: '0.5s' }} asChild>
+              <a href="https://docs.google.com/document/d/1w-_0Cez3CX4lOLcv6l0E81dr8luGcg_t/edit" target="_blank" rel="noopener noreferrer">
+                <Download className="mr-2" size={16} />
+                Download Resume
+              </a>
             </Button>
             <Button variant="outline" asChild className="animate-fade-up" style={{ animationDelay: '0.6s' }}>
               <a href="#contact">

@@ -11,15 +11,15 @@ const Hero: React.FC = () => {
           <span className="text-primary">Vibhu Kumar</span>
         </h1>
         <h2 className="text-2xl md:text-3xl font-medium mb-6 text-muted-foreground animate-fade-up" style={{ animationDelay: '0.1s' }}>
-          Product Manager & Data Analytics Expert
+          Senior Product Manager in Digital Innovation
         </h2>
         <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl animate-fade-up" style={{ animationDelay: '0.2s' }}>
-          I help organizations transform data into actionable insights and build products that solve real-world problems. My expertise lies in product strategy, data analysis, and cross-functional team leadership.
+          Shaping the future of e-commerce, foodtech, and adtech with data-driven products that solve real-world problems. I build digital experiences that deliver measurable impact — for people and for the planet.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 animate-fade-up" style={{ animationDelay: '0.4s' }}>
           <Button asChild className="btn-primary">
             <a href="#portfolio">
-              View My Work <ArrowRight className="ml-2" size={16} />
+              Explore My Work <ArrowRight className="ml-2" size={16} />
             </a>
           </Button>
           <Button asChild variant="outline">

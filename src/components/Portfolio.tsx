@@ -8,7 +8,10 @@ import { Badge } from '@/components/ui/badge';
 interface Project {
   id: number;
   title: string;
+  role: string;
   description: string;
+  impact: string;
+  tools: string;
   image: string;
   category: string[];
   link: string;
@@ -20,55 +23,51 @@ const Portfolio: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "E-commerce Website",
-      description: "A modern e-commerce platform with product filtering and secure checkout.",
+      title: "Retail Media Platform for MediaMarktSaturn",
+      role: "Senior Product Manager",
+      description: "Built and scaled adtech data products across 11 countries, enabling brands to access closed-loop measurement and improve customer targeting.",
+      impact: "Drove €11M in revenue in 2023; enabled monetization of 1st-party data.",
+      tools: "Jira, Tableau, SQL, GDPR-compliant data architecture",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-      category: ["web", "frontend"],
+      category: ["adtech", "data"],
       link: "#"
     },
     {
       id: 2,
-      title: "Task Management App",
-      description: "A drag-and-drop task management application with team collaboration features.",
+      title: "Global Product Operations at Delivery Hero",
+      role: "Global Product Operations Manager",
+      description: "Monitored product usage in 70 countries and collaborated with regional teams to improve engagement.",
+      impact: "Achieved 35% increase in product usage and saved €6M in the MENA region.",
+      tools: "Jira, SQL, analytics dashboards",
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-      category: ["web", "fullstack"],
+      category: ["foodtech", "operations"],
       link: "#"
     },
     {
       id: 3,
-      title: "Finance Dashboard",
-      description: "Interactive dashboard with data visualization for financial analytics.",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
-      category: ["design", "frontend"],
+      title: "Food Waste Sustainability Venture",
+      role: "Co-Founder / Lead",
+      description: "Launched a food waste reduction initiative across delivery platforms.",
+      impact: "Supported by the EIT Climate-KIC; funded by EU.",
+      tools: "Business model innovation, analytics",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+      category: ["sustainability", "innovation"],
       link: "#"
     },
     {
       id: 4,
-      title: "Travel Blog",
-      description: "A responsive travel blog with custom CMS and interactive maps.",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
-      category: ["web", "design"],
-      link: "#"
-    },
-    {
-      id: 5,
-      title: "Recipe App",
-      description: "Mobile-first recipe application with search and favorites functionality.",
+      title: "Self-Service Data Platform at Stryber",
+      role: "Data Scientist & Product Strategist",
+      description: "Designed internal platform to help teams track KPIs and make informed decisions.",
+      impact: "Reduced manual reporting time by 70%.",
+      tools: "Tableau, SQL, Python, Figma",
       image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
-      category: ["mobile", "fullstack"],
-      link: "#"
-    },
-    {
-      id: 6,
-      title: "Fitness Tracker",
-      description: "Workout tracking application with progress charts and social sharing.",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
-      category: ["mobile", "web"],
+      category: ["data", "analytics"],
       link: "#"
     }
   ];
   
-  const categories = ['all', 'web', 'mobile', 'design', 'frontend', 'fullstack'];
+  const categories = ['all', 'adtech', 'data', 'foodtech', 'operations', 'sustainability', 'innovation', 'analytics'];
   
   const filteredProjects = filter === 'all' 
     ? projects 
@@ -79,7 +78,7 @@ const Portfolio: React.FC = () => {
       <div className="container">
         <h2 className="section-title">Portfolio</h2>
         <p className="text-lg text-muted-foreground mb-8 max-w-2xl">
-          Here are some of my recent projects. Each one represents a unique challenge and solution.
+          A selection of my key projects across different industries and roles. Each project represents measurable impact and innovative problem-solving.
         </p>
         
         <div className="flex flex-wrap gap-2 mb-8">
@@ -108,7 +107,16 @@ const Portfolio: React.FC = () => {
               </div>
               <CardContent className="p-4">
                 <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                <p className="text-sm font-medium text-primary mb-2">{project.role}</p>
                 <p className="text-muted-foreground mb-3">{project.description}</p>
+                <div className="mb-3">
+                  <span className="font-semibold">Impact: </span>
+                  <span>{project.impact}</span>
+                </div>
+                <div className="mb-3">
+                  <span className="font-semibold">Tools: </span>
+                  <span className="text-muted-foreground">{project.tools}</span>
+                </div>
                 <div className="flex flex-wrap gap-1">
                   {project.category.map(cat => (
                     <Badge key={cat} variant="secondary" className="capitalize">{cat}</Badge>
