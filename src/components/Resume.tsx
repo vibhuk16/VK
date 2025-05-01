@@ -36,7 +36,7 @@ const Resume: React.FC = () => {
     },
     {
       degree: "Bachelor of Technology",
-      institution: "Indian Institute of Technology",
+      institution: "Amity University",
       year: "2014",
       description: "Graduated with honors. Completed capstone project on data-driven business decision systems."
     }
