@@ -1,17 +1,13 @@
-
 import React from 'react';
 import { Mail, Linkedin } from 'lucide-react';
-
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  
-  return (
-    <footer className="bg-secondary py-8">
+  return <footer className="bg-secondary py-8">
       <div className="container">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <h3 className="text-xl font-bold">Vibhu Kumar</h3>
-            <p className="text-muted-foreground">Senior Product Manager</p>
+            
           </div>
           
           <nav className="flex space-x-4 mb-4 md:mb-0">
@@ -36,8 +32,6 @@ const Footer: React.FC = () => {
           &copy; {currentYear} Vibhu Kumar. All rights reserved.
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
