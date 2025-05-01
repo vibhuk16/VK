@@ -35,7 +35,7 @@ const About: React.FC = () => {
             <div className="mb-8 flex justify-center">
               <div className="w-64 h-64 rounded-full overflow-hidden shadow-lg">
                 <img 
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e" 
+                  src="/lovable-uploads/db033ea9-09fc-44c2-bafe-74b18ca602ff.png" 
                   alt="Vibhu Kumar" 
                   className="w-full h-full object-cover"
                 />
