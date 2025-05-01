@@ -23,20 +23,26 @@ const Navbar: React.FC = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const closeMenu = () => {
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
+  };
   
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/95 shadow-sm backdrop-blur-sm py-3' : 'bg-transparent py-5'}`}>
       <div className="container flex items-center justify-between">
         <Link to="/" className="text-xl md:text-2xl font-bold">
-          Portfolio
+          Vibhu Kumar
         </Link>
 
         <div className="hidden md:flex items-center space-x-1">
-          <a href="#home" className="nav-link">Home</a>
-          <a href="#about" className="nav-link">About</a>
-          <a href="#portfolio" className="nav-link">Portfolio</a>
-          <a href="#resume" className="nav-link">Resume</a>
-          <a href="#contact" className="nav-link">Contact</a>
+          <a href="#home" className="nav-link hover:text-primary">Home</a>
+          <a href="#about" className="nav-link hover:text-primary">About Me</a>
+          <a href="#portfolio" className="nav-link hover:text-primary">Portfolio</a>
+          <a href="#resume" className="nav-link hover:text-primary">Resume</a>
+          <a href="#contact" className="nav-link hover:text-primary">Contact</a>
         </div>
 
         <button onClick={toggleMenu} className="md:hidden p-2">
@@ -48,11 +54,11 @@ const Navbar: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-background p-4 shadow-md animate-fade-in">
           <nav className="flex flex-col space-y-4">
-            <a href="#home" className="nav-link" onClick={toggleMenu}>Home</a>
-            <a href="#about" className="nav-link" onClick={toggleMenu}>About</a>
-            <a href="#portfolio" className="nav-link" onClick={toggleMenu}>Portfolio</a>
-            <a href="#resume" className="nav-link" onClick={toggleMenu}>Resume</a>
-            <a href="#contact" className="nav-link" onClick={toggleMenu}>Contact</a>
+            <a href="#home" className="nav-link hover:text-primary" onClick={closeMenu}>Home</a>
+            <a href="#about" className="nav-link hover:text-primary" onClick={closeMenu}>About Me</a>
+            <a href="#portfolio" className="nav-link hover:text-primary" onClick={closeMenu}>Portfolio</a>
+            <a href="#resume" className="nav-link hover:text-primary" onClick={closeMenu}>Resume</a>
+            <a href="#contact" className="nav-link hover:text-primary" onClick={closeMenu}>Contact</a>
           </nav>
         </div>
       )}
