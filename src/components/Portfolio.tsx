@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
+import { trackPageView, trackEvent } from '@/services/analytics';
 
 interface Project {
   id: number;
@@ -167,4 +168,3 @@ const Portfolio: React.FC = () => {
 };
 
 export default Portfolio;
-

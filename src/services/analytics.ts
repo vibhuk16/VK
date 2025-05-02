@@ -7,6 +7,13 @@ interface EventParams {
  * Analytics service to track user interactions and page views
  */
 
+// Extend Window interface to include gtag
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 // Initialize analytics data in localStorage if it doesn't exist
 const initializeAnalytics = () => {
   if (!localStorage.getItem('analytics_sessions')) {
@@ -107,7 +114,6 @@ const sendAnalyticsData = (type: 'pageview' | 'event', data: any) => {
   
   // For integration with services like Google Analytics, you would add the implementation here
   if (window.gtag) {
-    // @ts-ignore - gtag might not be defined in the window type
     window.gtag('event', type === 'pageview' ? 'page_view' : data.event, data);
   }
 };

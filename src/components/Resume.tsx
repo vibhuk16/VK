@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { FileText, Download, ArrowRight, Chart } from 'lucide-react';
+import { FileText, Download, ArrowRight, BarChart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -142,7 +142,7 @@ const Resume: React.FC = () => {
               style={{ animationDelay: '0.7s' }}
             >
               <Link to="/analytics" onClick={() => trackEvent('analytics_click')}>
-                <Chart className="mr-2" size={16} />
+                <BarChart className="mr-2" size={16} />
                 View Analytics
               </Link>
             </Button>
