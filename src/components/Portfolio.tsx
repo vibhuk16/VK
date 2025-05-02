@@ -1,9 +1,10 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { useToast } from '@/hooks/use-toast';
 
 interface Project {
   id: number;
@@ -19,6 +20,12 @@ interface Project {
 
 const Portfolio: React.FC = () => {
   const [filter, setFilter] = useState('all');
+  const { toast } = useToast();
+  
+  // Track page view when the component mounts
+  useEffect(() => {
+    trackPageView('portfolio');
+  }, []);
   
   const projects: Project[] = [
     {
@@ -28,7 +35,7 @@ const Portfolio: React.FC = () => {
       description: "Built and scaled adtech data products across 11 countries, enabling brands to access closed-loop measurement and improve customer targeting.",
       impact: "Drove €11M in revenue in 2023; enabled monetization of 1st-party data.",
       tools: "Jira, Tableau, SQL, GDPR-compliant data architecture",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      image: "/lovable-uploads/97f3d287-0da0-44c1-a5fa-b8031c5b47f0.png",
       category: ["adtech", "data"],
       link: "#"
     },
@@ -39,7 +46,7 @@ const Portfolio: React.FC = () => {
       description: "Monitored product usage in 70 countries and collaborated with regional teams to improve engagement.",
       impact: "Achieved 35% increase in product usage and saved €6M in the MENA region.",
       tools: "Jira, SQL, analytics dashboards",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+      image: "/lovable-uploads/4b41a4a5-4dc3-46ca-b7b6-83276e517ac6.png",
       category: ["foodtech", "operations"],
       link: "#"
     },
@@ -50,7 +57,7 @@ const Portfolio: React.FC = () => {
       description: "Launched a food waste reduction initiative across delivery platforms.",
       impact: "Supported by the EIT Climate-KIC; funded by EU.",
       tools: "Business model innovation, analytics",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+      image: "/lovable-uploads/b6d373d9-9a84-4d2d-9d10-0aedb2048cbc.png",
       category: ["sustainability", "innovation"],
       link: "#"
     },
@@ -72,6 +79,12 @@ const Portfolio: React.FC = () => {
   const filteredProjects = filter === 'all' 
     ? projects 
     : projects.filter(project => project.category.includes(filter));
+    
+  // Function to handle when a project is clicked
+  const handleProjectClick = (projectTitle: string) => {
+    // Track project view event
+    trackEvent('project_view', { project: projectTitle });
+  };
   
   return (
     <section id="portfolio">
@@ -87,7 +100,10 @@ const Portfolio: React.FC = () => {
               key={category}
               variant={filter === category ? "default" : "outline"}
               size="sm"
-              onClick={() => setFilter(category)}
+              onClick={() => {
+                setFilter(category);
+                trackEvent('filter_change', { category });
+              }}
               className="capitalize"
             >
               {category}
@@ -97,7 +113,12 @@ const Portfolio: React.FC = () => {
         
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, index) => (
-            <Card key={project.id} className="card-hover overflow-hidden animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
+            <Card 
+              key={project.id} 
+              className="card-hover overflow-hidden animate-fade-up" 
+              style={{ animationDelay: `${index * 0.1}s` }}
+              onClick={() => handleProjectClick(project.title)}
+            >
               <div className="h-52 overflow-hidden">
                 <img 
                   src={project.image} 
@@ -125,7 +146,14 @@ const Portfolio: React.FC = () => {
               </CardContent>
               <CardFooter className="p-4 pt-0">
                 <Button variant="link" className="p-0 h-auto" asChild>
-                  <a href={project.link} className="inline-flex items-center">
+                  <a 
+                    href={project.link} 
+                    className="inline-flex items-center"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      trackEvent('project_link_click', { project: project.title });
+                    }}
+                  >
                     View Project <ArrowRight className="ml-2" size={16} />
                   </a>
                 </Button>
@@ -139,3 +167,4 @@ const Portfolio: React.FC = () => {
 };
 
 export default Portfolio;
+

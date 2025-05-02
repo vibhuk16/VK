@@ -1,11 +1,18 @@
 
-import React from 'react';
-import { FileText, Download, ArrowRight } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { FileText, Download, ArrowRight, Chart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { Link } from 'react-router-dom';
+import { trackPageView, trackEvent } from '@/services/analytics';
 
 const Resume: React.FC = () => {
+  // Track page view when the component mounts
+  useEffect(() => {
+    trackPageView('resume');
+  }, []);
+
   const experiences = [
     {
       title: "Senior Product Manager",
@@ -106,16 +113,38 @@ const Resume: React.FC = () => {
           </p>
           
           <div className="flex gap-4">
-            <Button className="btn-primary animate-fade-up" style={{ animationDelay: '0.5s' }} asChild>
+            <Button 
+              className="btn-primary animate-fade-up" 
+              style={{ animationDelay: '0.5s' }} 
+              asChild
+              onClick={() => trackEvent('resume_download')}
+            >
               <a href="https://docs.google.com/document/d/1w-_0Cez3CX4lOLcv6l0E81dr8luGcg_t/edit" target="_blank" rel="noopener noreferrer">
                 <Download className="mr-2" size={16} />
                 Download Resume
               </a>
             </Button>
-            <Button variant="outline" asChild className="animate-fade-up" style={{ animationDelay: '0.6s' }}>
+            <Button 
+              variant="outline" 
+              asChild 
+              className="animate-fade-up" 
+              style={{ animationDelay: '0.6s' }}
+              onClick={() => trackEvent('contact_click')}
+            >
               <a href="#contact">
                 Contact Me <ArrowRight className="ml-2" size={16} />
               </a>
+            </Button>
+            <Button 
+              variant="outline" 
+              asChild 
+              className="animate-fade-up" 
+              style={{ animationDelay: '0.7s' }}
+            >
+              <Link to="/analytics" onClick={() => trackEvent('analytics_click')}>
+                <Chart className="mr-2" size={16} />
+                View Analytics
+              </Link>
             </Button>
           </div>
         </div>
