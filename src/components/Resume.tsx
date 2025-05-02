@@ -10,19 +10,19 @@ const Resume: React.FC = () => {
     {
       title: "Senior Product Manager",
       company: "MediaMarktSaturn",
-      period: "2021 - Present",
+      period: "2023 - Present",
       description: "Leading retail media product development across 11 countries for Europe's largest consumer electronics retailer. Building and scaling adtech data products that enable brands to access closed-loop measurement and targeting capabilities."
     },
     {
       title: "Global Product Operations Manager",
       company: "Delivery Hero",
-      period: "2019 - 2021",
+      period: "2022 - 2022",
       description: "Monitored product usage in 70 countries and collaborated with regional teams to improve engagement. Led initiatives resulting in 35% increase in product usage and €6M cost savings in MENA region."
     },
     {
       title: "Data Scientist & Product Strategist",
       company: "Stryber",
-      period: "2017 - 2019",
+      period: "2018 - 2021",
       description: "Designed self-service data platform to help teams track KPIs and make informed decisions. Reduced manual reporting time by 70% and implemented data-driven decision frameworks."
     }
   ];
@@ -31,13 +31,13 @@ const Resume: React.FC = () => {
     {
       degree: "Master of Science in Computational Science",
       institution: "Technical University of Munich",
-      year: "2016",
+      year: "2020",
       description: "Specialized in data analytics and computational modeling with focus on business applications."
     },
     {
-      degree: "Bachelor of Technology",
+      degree: "Bachelor of Technology in Mechanical Automation Engineering",
       institution: "Amity University",
-      year: "2014",
+      year: "2015",
       description: "Graduated with honors. Completed capstone project on data-driven business decision systems."
     }
   ];
