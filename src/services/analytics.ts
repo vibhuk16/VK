@@ -14,6 +14,30 @@ declare global {
   }
 }
 
+// Admin password for analytics access
+const ADMIN_PASSWORD = "vibhu123"; // In a real app, this would be securely stored
+
+// Check if user is authenticated as admin
+export const isAdmin = (): boolean => {
+  return localStorage.getItem('analytics_admin_auth') === 'true';
+};
+
+// Admin login function
+export const adminLogin = (password: string): boolean => {
+  const isCorrect = password === ADMIN_PASSWORD;
+  
+  if (isCorrect) {
+    localStorage.setItem('analytics_admin_auth', 'true');
+  }
+  
+  return isCorrect;
+};
+
+// Admin logout function
+export const adminLogout = (): void => {
+  localStorage.removeItem('analytics_admin_auth');
+};
+
 // Initialize analytics data in localStorage if it doesn't exist
 const initializeAnalytics = () => {
   if (!localStorage.getItem('analytics_sessions')) {

@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Link } from 'react-router-dom';
-import { trackPageView, trackEvent } from '@/services/analytics';
+import { trackPageView, trackEvent, isAdmin } from '@/services/analytics';
 
 const Resume: React.FC = () => {
   // Track page view when the component mounts
@@ -135,17 +135,19 @@ const Resume: React.FC = () => {
                 Contact Me <ArrowRight className="ml-2" size={16} />
               </a>
             </Button>
-            <Button 
-              variant="outline" 
-              asChild 
-              className="animate-fade-up" 
-              style={{ animationDelay: '0.7s' }}
-            >
-              <Link to="/analytics" onClick={() => trackEvent('analytics_click')}>
-                <BarChart className="mr-2" size={16} />
-                View Analytics
-              </Link>
-            </Button>
+            {isAdmin() && (
+              <Button 
+                variant="outline" 
+                asChild 
+                className="animate-fade-up" 
+                style={{ animationDelay: '0.7s' }}
+              >
+                <Link to="/analytics" onClick={() => trackEvent('analytics_click')}>
+                  <BarChart className="mr-2" size={16} />
+                  View Analytics
+                </Link>
+              </Button>
+            )}
           </div>
         </div>
       </div>

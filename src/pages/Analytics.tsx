@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { 
@@ -9,11 +8,12 @@ import {
   TableBody, 
   TableCell 
 } from '@/components/ui/table';
-import { getAnalyticsData } from '@/services/analytics';
+import { getAnalyticsData, isAdmin, adminLogout } from '@/services/analytics';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowLeft, LogOut } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import AdminLogin from '@/components/AdminLogin';
 
 interface AnalyticsSession {
   sessionId: string;
@@ -47,19 +47,34 @@ interface AnalyticsData {
 const Analytics: React.FC = () => {
   const [analyticsData, setAnalyticsData] = useState<AnalyticsData | null>(null);
   const [view, setView] = useState<'overview' | 'pageviews' | 'events'>('overview');
+  const [authenticated, setAuthenticated] = useState<boolean>(isAdmin());
+  const navigate = useNavigate();
   
   useEffect(() => {
-    const data = getAnalyticsData();
-    setAnalyticsData(data);
-    
-    // Refresh data every 10 seconds
-    const interval = setInterval(() => {
-      const refreshedData = getAnalyticsData();
-      setAnalyticsData(refreshedData);
-    }, 10000);
-    
-    return () => clearInterval(interval);
-  }, []);
+    // Only fetch data if authenticated
+    if (authenticated) {
+      const data = getAnalyticsData();
+      setAnalyticsData(data);
+      
+      // Refresh data every 10 seconds
+      const interval = setInterval(() => {
+        const refreshedData = getAnalyticsData();
+        setAnalyticsData(refreshedData);
+      }, 10000);
+      
+      return () => clearInterval(interval);
+    }
+  }, [authenticated]);
+  
+  const handleLogout = () => {
+    adminLogout();
+    setAuthenticated(false);
+    navigate('/');
+  };
+  
+  if (!authenticated) {
+    return <AdminLogin onLoginSuccess={() => setAuthenticated(true)} />;
+  }
   
   if (!analyticsData) {
     return (
@@ -90,11 +105,16 @@ const Analytics: React.FC = () => {
     <div className="container py-8">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Analytics Dashboard</h1>
-        <Button variant="outline" asChild>
-          <Link to="/" className="flex items-center gap-2">
-            <ArrowLeft size={16} /> Back to Home
-          </Link>
-        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" onClick={handleLogout}>
+            <LogOut size={16} className="mr-2" /> Logout
+          </Button>
+          <Button variant="outline" asChild>
+            <Link to="/" className="flex items-center gap-2">
+              <ArrowLeft size={16} /> Back to Home
+            </Link>
+          </Button>
+        </div>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
