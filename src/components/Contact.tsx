@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
 import { Mail, Linkedin, ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { trackEvent } from '@/services/analytics';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -59,6 +60,7 @@ const Contact: React.FC = () => {
           message: ''
         });
         setIsSubmitted(true);
+        trackEvent('contact_form_submit');
         
         // Reset the submitted state after showing success for a while
         setTimeout(() => setIsSubmitted(false), 5000);
@@ -168,7 +170,11 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="font-bold mb-1">Email</h3>
-                    <a href="mailto:vibhu.kumar@tum.de" className="text-primary hover:underline">
+                    <a 
+                      href="mailto:vibhu.kumar@tum.de" 
+                      className="text-primary hover:underline"
+                      onClick={() => trackEvent('contact_info_click', { type: 'email' })}
+                    >
                       vibhu.kumar@tum.de
                     </a>
                   </div>
@@ -182,7 +188,13 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="font-bold mb-1">LinkedIn</h3>
-                    <a href="https://linkedin.com/in/vibhukumar" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+                    <a 
+                      href="https://linkedin.com/in/vibhukumar" 
+                      className="text-primary hover:underline" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={() => trackEvent('contact_info_click', { type: 'linkedin' })}
+                    >
                       linkedin.com/in/vibhukumar
                     </a>
                   </div>

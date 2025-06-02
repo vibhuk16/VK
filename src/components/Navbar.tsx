@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { trackEvent } from '@/services/analytics';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,11 +38,11 @@ const Navbar: React.FC = () => {
         </Link>
 
         <div className="hidden md:flex items-center space-x-1">
-          <a href="#home" className="nav-link hover:text-primary">Home</a>
-          <a href="#about" className="nav-link hover:text-primary">About Me</a>
-          <a href="#portfolio" className="nav-link hover:text-primary">Portfolio</a>
-          <a href="#resume" className="nav-link hover:text-primary">Resume</a>
-          <a href="#contact" className="nav-link hover:text-primary">Contact</a>
+          <a href="#home" className="nav-link hover:text-primary" onClick={() => trackEvent('nav_click', { section: 'home' })}>Home</a>
+          <a href="#about" className="nav-link hover:text-primary" onClick={() => trackEvent('nav_click', { section: 'about' })}>About</a>
+          <a href="#experience" className="nav-link hover:text-primary" onClick={() => trackEvent('nav_click', { section: 'experience' })}>Experience</a>
+          <a href="#projects" className="nav-link hover:text-primary" onClick={() => trackEvent('nav_click', { section: 'projects' })}>Projects</a>
+          <a href="#contact" className="nav-link hover:text-primary" onClick={() => trackEvent('nav_click', { section: 'contact' })}>Contact</a>
         </div>
 
         <button onClick={toggleMenu} className="md:hidden p-2">
@@ -54,11 +54,11 @@ const Navbar: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-background p-4 shadow-md animate-fade-in">
           <nav className="flex flex-col space-y-4">
-            <a href="#home" className="nav-link hover:text-primary" onClick={closeMenu}>Home</a>
-            <a href="#about" className="nav-link hover:text-primary" onClick={closeMenu}>About Me</a>
-            <a href="#portfolio" className="nav-link hover:text-primary" onClick={closeMenu}>Portfolio</a>
-            <a href="#resume" className="nav-link hover:text-primary" onClick={closeMenu}>Resume</a>
-            <a href="#contact" className="nav-link hover:text-primary" onClick={closeMenu}>Contact</a>
+            <a href="#home" className="nav-link hover:text-primary" onClick={() => { trackEvent('nav_click', { section: 'home', type: 'mobile' }); closeMenu(); }}>Home</a>
+            <a href="#about" className="nav-link hover:text-primary" onClick={() => { trackEvent('nav_click', { section: 'about', type: 'mobile' }); closeMenu(); }}>About</a>
+            <a href="#experience" className="nav-link hover:text-primary" onClick={() => { trackEvent('nav_click', { section: 'experience', type: 'mobile' }); closeMenu(); }}>Experience</a>
+            <a href="#projects" className="nav-link hover:text-primary" onClick={() => { trackEvent('nav_click', { section: 'projects', type: 'mobile' }); closeMenu(); }}>Projects</a>
+            <a href="#contact" className="nav-link hover:text-primary" onClick={() => { trackEvent('nav_click', { section: 'contact', type: 'mobile' }); closeMenu(); }}>Contact</a>
           </nav>
         </div>
       )}

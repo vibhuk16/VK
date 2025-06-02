@@ -1,18 +1,12 @@
-
 import React, { useEffect } from 'react';
 import { FileText, Download, ArrowRight, BarChart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Link } from 'react-router-dom';
-import { trackPageView, trackEvent, isAdmin } from '@/services/analytics';
+import { trackEvent, isAdmin } from '@/services/analytics';
 
 const Resume: React.FC = () => {
-  // Track page view when the component mounts
-  useEffect(() => {
-    trackPageView('resume');
-  }, []);
-
   const experiences = [
     {
       title: "Senior Product Manager",

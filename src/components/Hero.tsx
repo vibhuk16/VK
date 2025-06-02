@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { trackEvent } from '@/services/analytics';
+
 const Hero: React.FC = () => {
   return <section id="home" className="pt-32 pb-20 md:pt-40 md:pb-32">
       <div className="container flex flex-col items-center md:items-start text-center md:text-left">
@@ -19,12 +21,12 @@ const Hero: React.FC = () => {
         animationDelay: '0.4s'
       }}>
           <Button asChild className="btn-primary">
-            <a href="#portfolio">
+            <a href="#portfolio" onClick={() => trackEvent('hero_cta_click', { cta_text: 'Explore My Work', target_section: 'portfolio' })}>
               Explore My Work <ArrowRight className="ml-2" size={16} />
             </a>
           </Button>
           <Button asChild variant="outline">
-            <a href="#contact">
+            <a href="#contact" onClick={() => trackEvent('hero_cta_click', { cta_text: 'Contact Me', target_section: 'contact' })}>
               Contact Me
             </a>
           </Button>
