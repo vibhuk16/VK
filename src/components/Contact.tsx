@@ -34,7 +34,7 @@ const Contact: React.FC = () => {
       // This is a placeholder for the email sending functionality
       // In a real implementation, you would use a service like EmailJS, FormSpree, or your own backend
       
-      const response = await fetch('https://formspree.io/f/yourformspree-id', {
+      const response = await fetch('https://formspree.io/f/xjkrvwew', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
