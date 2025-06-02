@@ -35,7 +35,7 @@ const Portfolio: React.FC = () => {
       description: "Built and scaled adtech data products across 11 countries, enabling brands to access closed-loop measurement and improve customer targeting.",
       impact: "Drove €11M in revenue in 2023; enabled monetization of 1st-party data.",
       tools: "Jira, Tableau, SQL, GDPR-compliant data architecture",
-      image: `${import.meta.env.BASE_URL}lovable-uploads/97f3d287-0da0-44c1-a5fa-b8031c5b47f0.png`,
+      image: `${import.meta.env.BASE_URL}97f3d287-0da0-44c1-a5fa-b8031c5b47f0.png`,
       category: ["adtech", "data"],
       link: "#"
     },
@@ -46,7 +46,7 @@ const Portfolio: React.FC = () => {
       description: "Monitored product usage in 70 countries and collaborated with regional teams to improve engagement.",
       impact: "Achieved 35% increase in product usage and saved €6M in the MENA region.",
       tools: "Jira, SQL, analytics dashboards",
-      image: `${import.meta.env.BASE_URL}lovable-uploads/4b41a4a5-4dc3-46ca-b7b6-83276e517ac6.png`,
+      image: `${import.meta.env.BASE_URL}4b41a4a5-4dc3-46ca-b7b6-83276e517ac6.png`,
       category: ["foodtech", "operations"],
       link: "#"
     },
@@ -57,7 +57,7 @@ const Portfolio: React.FC = () => {
       description: "Launched a food waste reduction initiative across delivery platforms.",
       impact: "Supported by the EIT Climate-KIC; funded by EU.",
       tools: "Business model innovation, analytics",
-      image: `${import.meta.env.BASE_URL}lovable-uploads/b6d373d9-9a84-4d2d-9d10-0aedb2048cbc.png`,
+      image: `${import.meta.env.BASE_URL}b6d373d9-9a84-4d2d-9d10-0aedb2048cbc.png`,
       category: ["sustainability", "innovation"],
       link: "#"
     },
