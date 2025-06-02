@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Briefcase, User, Book } from 'lucide-react';
@@ -34,9 +33,9 @@ const About: React.FC = () => {
           <div className="animate-fade-up" style={{ animationDelay: '0.2s' }}>
             <div className="mb-8 flex justify-center">
               <div className="w-64 h-64 rounded-full overflow-hidden shadow-lg">
-                <img 
-                  src="/lovable-uploads/db033ea9-09fc-44c2-bafe-74b18ca602ff.png" 
-                  alt="Vibhu Kumar" 
+                <img
+                  src={`${import.meta.env.BASE_URL}lovable-uploads/db033ea9-09fc-44c2-bafe-74b18ca602ff.png`}
+                  alt="Vibhu Kumar"
                   className="w-full h-full object-cover"
                 />
               </div>
