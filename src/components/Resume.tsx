@@ -46,7 +46,7 @@ const Resume: React.FC = () => {
   return (
     <section id="resume" className="bg-secondary/50">
       <div className="container">
-        <h2 className="section-title">Resume</h2>
+        <h2 className="section-title">My Journey</h2>
         
         <div className="mb-8 max-w-3xl">
           <p className="text-lg mb-4">
@@ -103,7 +103,7 @@ const Resume: React.FC = () => {
         
         <div className="flex flex-col items-center text-center">
           <p className="text-lg mb-6 max-w-2xl">
-            For more details about my work experience, skills, and education, you can download my complete resume.
+            For more details about my work experience, skills, and education, you can download my complete journey.
           </p>
           
           <div className="flex gap-4">
@@ -115,7 +115,7 @@ const Resume: React.FC = () => {
             >
               <a href="https://docs.google.com/document/d/1w-_0Cez3CX4lOLcv6l0E81dr8luGcg_t/edit" target="_blank" rel="noopener noreferrer">
                 <Download className="mr-2" size={16} />
-                Download Resume
+                My Resume
               </a>
             </Button>
             <Button 
