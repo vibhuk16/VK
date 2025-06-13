@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <meta http-equiv="refresh" content="0; url=/VK/">
+    <script>
+      // GitHub Pages SPA redirect
+      var l = window.location;
+      var path = l.pathname.replace(/^\/VK\//, '/VK/');
+      if (path !== '/VK/' && path !== '/VK/index.html') {
+        window.location.replace('/VK/' + '#'+ path + l.search + l.hash);
+      }
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html> 
